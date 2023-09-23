@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class AsyncTaskService {
@@ -15,7 +16,7 @@ public class AsyncTaskService {
     public CompletableFuture<Integer> startHeavyTask(int id) {
         logger.info("start: {}", id);
         try {
-            Thread.sleep(3000);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
